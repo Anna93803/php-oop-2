@@ -43,4 +43,11 @@ class Games extends Products {
 
         return $this;
     }
+
+    public function printHtml() {
+        echo "<strong>Giochi animali</strong>" . "<br>";
+        echo "Nome oggetto: " . $this->getName() . "<br>";
+        echo "Il colore: " . $this->getColor() . "<br>";
+        echo "La lunghezza e di cm: " . $this->getLenght() . "<br>";
+    }
 }

@@ -2,25 +2,48 @@
 
 class Customer {
 
-    protected $login;
+    protected $firstName;
+    protected $lastName;
     protected $payCard;
 
-    function __construct($_payCard)
-    {
+    function __construct($_firstName, $_lastName, $_payCard)
+    {   
+        $this->setFirstName($_firstName);
+        $this->setLastName($_lastName);
         $this->setPayCard($_payCard);
     }
 
     /**
-     * Get the value of login
+     * Get the value of lastName
      */ 
-    public function getLogin()
+    public function getLastName()
     {
-        return $this->login;
+        return $this->lastName;
     }
 
-    public function setLogin($login)
+    public function setLastName($lastName)
     {
-        $this->login = $login;
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of firstName
+     */ 
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set the value of firstName
+     *
+     * @return  self
+     */ 
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
 
         return $this;
     }
@@ -38,5 +61,16 @@ class Customer {
         $this->payCard = $payCard;
 
         return $this;
+    }
+
+    public function getFullName() {
+
+        return $this->getFirstName() . " " . $this->getLastName();
+    }
+
+    public function printHtml() {
+        echo "<strong>Login</strong>" . "<br>";
+        echo "Login utente: " . "" . $this->getFullName() . "<br>";
+        echo "Carta di credito: " . "" .$this->getPayCard() . "<br>";
     }
 }

@@ -1,15 +1,15 @@
 <?php
+require_once __DIR__ .  "/customer.php";
+class Products extends Customer {
 
-class Products {
-
-    protected $price;
     protected $name;
+    protected $price;
 
     
-    function __construct($_price, $_name) 
+    function __construct($_name, $_price) 
     {
-        $this->setPrice($_price);
         $this->setName($_name);
+        $this->setPrice($_price);
     }
     /**
      * Get the value of price
@@ -37,5 +37,10 @@ class Products {
     {
         $this->name = $name;
         return $this;
+    }
+
+    public function printHtml() {
+        echo "Nome prodotto: ". $this->getName() . "<br>";
+        echo "Il prezzo del prodotto" . $this->getPrice() . "<br>";
     }
 }
