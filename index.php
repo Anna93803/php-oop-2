@@ -10,8 +10,14 @@ require_once "./classi/games.php";
 require_once "./classi/customer.php";
 require_once "./classi/food.php";
 require_once "./classi/cart.php";
+require_once "./classi/creditCard.php";
 
-$customer = new Customer();
+$customer = new Customer("Giulia", "Verdi", true, "51598956", "12/2022" );
+// var_dump($customer);
+
+
+$creditCard = new CreditCard("51598956", "12/2022");
+
 $customer->register("Giulia", "Verdi");
 
 $games1 = new Games("corda", 10.50, "verde" , 10);
@@ -26,10 +32,15 @@ $customer->cart->add($games2, $food2, $games1);
 
 // var_dump($customer);
 echo $customer->printHtml();
+echo $creditCard->printHtml();
+echo $creditCard->date() ? "Carta valida " . "<br>" : "Carta scaduta" . "<br>";
 echo $games1->printHtml();
 echo $games2->printHtml();
 echo $food2->printHtml() . "<br>";
-echo " <strong>Il totale del carrello è:</strong> " . $customer->cart->getTotal();
+echo " <strong>Il totale del carrello è:</strong> " . $customer->cart->getTotal() . "<br>";
+
+
+
 
 
 // var_dump($customer);

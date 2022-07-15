@@ -1,17 +1,21 @@
 <?php
 
 require_once __DIR__ . "./cart.php";
+// require_once __DIR__ . "./creditCard.php";
 class Customer {
 
     protected $firstName;
     protected $lastName;
     protected $isRegistered = false;
     public Cart $cart;
+    public CreditCard $crediCard;
 
-    function __construct($_firstName = null, $_lastName = null)
+    function __construct($_firstName = null, $_lastName = null, $_isRegistered, $_number, $_expiration)
     {   
 
+        $this->setisRegistered($_isRegistered);
         $this->cart = new Cart();
+        $this->crediCard = new CreditCard($_number, $_expiration);
 
         if(isset($_firstName) && isset($_lastName)) {
             $this->register($_firstName, $_lastName);
