@@ -1,16 +1,27 @@
 <?php
 
+require_once __DIR__ . "./cart.php";
 class Customer {
 
     protected $firstName;
     protected $lastName;
-    protected $payCard;
+    protected $isRegistered = false;
+    public Cart $cart;
 
-    function __construct($_firstName, $_lastName, $_payCard)
+    function __construct($_firstName = null, $_lastName = null)
     {   
+
+        $this->cart = new Cart();
+
+        if(isset($_firstName) && isset($_lastName)) {
+            $this->register($_firstName, $_lastName);
+        }
+    }
+
+    public function register($_firstName, $_lastName) {
         $this->setFirstName($_firstName);
         $this->setLastName($_lastName);
-        $this->setPayCard($_payCard);
+        $this->setisRegistered(true);
     }
 
     /**
@@ -36,11 +47,6 @@ class Customer {
         return $this->firstName;
     }
 
-    /**
-     * Set the value of firstName
-     *
-     * @return  self
-     */ 
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
@@ -51,14 +57,14 @@ class Customer {
     /**
      * Get the value of payCard
      */ 
-    public function getPayCard()
+    public function getisRegistered()
     {
-        return $this->payCard;
+        return $this->pisRegistered;
     }
 
-    public function setPayCard($payCard)
+    public function setisRegistered($isRegistered)
     {
-        $this->payCard = $payCard;
+        $this->isRegistered = $isRegistered;
 
         return $this;
     }
@@ -71,6 +77,5 @@ class Customer {
     public function printHtml() {
         echo "<strong>Login</strong>" . "<br>";
         echo "Login utente: " . "" . $this->getFullName() . "<br>";
-        echo "Carta di credito: " . "" .$this->getPayCard() . "<br>";
     }
 }

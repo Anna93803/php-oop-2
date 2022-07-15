@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ .  "/customer.php";
-class Products extends Customer {
+class Products  {
 
     protected $name;
     protected $price;

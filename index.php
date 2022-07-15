@@ -9,15 +9,26 @@ require_once "./classi/products.php";
 require_once "./classi/games.php";
 require_once "./classi/customer.php";
 require_once "./classi/food.php";
+require_once "./classi/cart.php";
 
-$customer = new Customer("Giulia", "Verdi","PayPal");
-$products =  new Products("€", "Prodotti per animali");
-$games = new Games(10.50, "corda", "verde" , 10);
-$food = new Food("Carne in scatola", 10.00, 250 , "manzo,riso,pesce");
+$customer = new Customer();
+$customer->register("Giulia", "Verdi");
+
+$games1 = new Games("corda", 10.50, "verde" , 10);
+$games2 = new Games("Lettino",2.50, "rosso", 15);
+
+$food1 = new Food("Carne in scatola", 10.00, 250 , "manzo,riso,pesce");
+$food2 = new Food("crocchette",5.00, 150,"pollo", "farina");
+
+var_dump($customer);
+
+$customer->cart->add($games2, $food2, $games1);
 
 echo $customer->printHtml();
-echo $games->printHtml();
-echo $food->printHtml();
+echo $games1->printHtml();
+echo $games2->printHtml();
+echo $food2->printHtml();
+
 
 // var_dump($customer);
 // var_dump($products);
