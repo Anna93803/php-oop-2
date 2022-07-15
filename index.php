@@ -18,16 +18,18 @@ $games1 = new Games("corda", 10.50, "verde" , 10);
 $games2 = new Games("Lettino",2.50, "rosso", 15);
 
 $food1 = new Food("Carne in scatola", 10.00, 250 , "manzo,riso,pesce");
-$food2 = new Food("crocchette",5.00, 150,"pollo", "farina");
+$food2 = new Food("crocchette",5.00, 150, "pollo,farina");
 
-var_dump($customer);
+// var_dump($customer);
 
 $customer->cart->add($games2, $food2, $games1);
 
+// var_dump($customer);
 echo $customer->printHtml();
 echo $games1->printHtml();
 echo $games2->printHtml();
-echo $food2->printHtml();
+echo $food2->printHtml() . "<br>";
+echo " <strong>Il totale del carrello è:</strong> " . $customer->cart->getTotal();
 
 
 // var_dump($customer);

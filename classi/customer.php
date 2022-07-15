@@ -76,6 +76,6 @@ class Customer {
 
     public function printHtml() {
         echo "<strong>Login</strong>" . "<br>";
-        echo "Login utente: " . "" . $this->getFullName() . "<br>";
+        echo "Utente: " . "" . $this->getFullName() . "<br>";
     }
 }
